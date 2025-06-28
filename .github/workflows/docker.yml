@@ -9,7 +9,7 @@ env:
   AWS_REGION: ap-southeast-2
   AWS_ACCOUNT_ID: 445567099272
   ECR_REGISTRY: 445567099272.dkr.ecr.ap-southeast-2.amazonaws.com
-  ECR_REPO_NAME: epam/demo-repo
+  ECR_REPO_NAME: epam/web-server-repo
   IMAGE_TAG: latest
 
 
