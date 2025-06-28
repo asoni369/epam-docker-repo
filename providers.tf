@@ -12,3 +12,15 @@ terraform {
 provider "aws" {
     region = "ap-southeast-2"
 }
+
+# add s3 backed state
+terraform {
+    backend "s3" {
+        bucket         = "epam-demo-terraform"
+        key            = "epam-docker-repo/terraform.tfstate"
+        region         = "ap-southeast-2"
+        use_lockfile   = true
+    }
+}
+        
+        
