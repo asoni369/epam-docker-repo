@@ -14,8 +14,26 @@ env:
 
 
 jobs:
-  build:
+  terraform-ecr-setup:
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+
+        
+  docker-build-and-push:
+    runs-on: ubuntu-latest
+    needs: terraform-ecr-setup
 
     permissions:
       contents: read

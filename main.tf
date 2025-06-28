@@ -1,8 +1,8 @@
-module "ecr" {
-  source  = "terraform-aws-modules/ecr/aws"
-  version = "2.4.0"
+resource "aws_ecr_repository" "epam_docker_repo" {
+  name                 = "epam/web-server-repo"
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
-  repository_name = "epam-demo-repository"
-
-  repository_read_write_access_arns = ["arn:aws:iam::445567099272:role/github_oidc"]
+  tags = local.common_tags
+  
 }
