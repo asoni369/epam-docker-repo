@@ -17,6 +17,9 @@ jobs:
   terraform-ecr-setup:
     runs-on: ubuntu-latest
 
+    env:
+      TF_WORKING_DIR: terraform
+
     permissions:
       contents: read
       id-token: write
@@ -37,11 +40,12 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ${{ env.TF_WORKING_DIR }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: ${{ env.TF_WORKING_DIR }}
 
-        
   docker-build-and-push:
     runs-on: ubuntu-latest
     needs: terraform-ecr-setup
